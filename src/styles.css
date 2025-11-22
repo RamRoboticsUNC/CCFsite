@@ -1,9 +1,12 @@
 :root {
   --header-height: 64px;
   --content-max-width: 1100px;
-  --overlay-width-desktop: 24%;
-  --overlay-width-tablet: 40%;
-  --overlay-width-mobile: 70%;
+  --overlay-gap-desktop: 6%;
+  --overlay-gap-tablet: 4%;
+  --overlay-gap-mobile: 3%;
+  --overlay-width-desktop: 22%;
+  --overlay-width-tablet: 38%;
+  --overlay-width-mobile: 68%;
   --overlay-bg: rgba(0, 0, 0, 0.68); /* ~68% opaque black */
   --text-on-dark: #ffffff;
   --text-on-light: #111111;
@@ -59,8 +62,19 @@ a {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   letter-spacing: 0.2px;
+}
+.brand-logo-small {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+.brand-text {
+  color: inherit;
 }
 
 .site-nav a {
@@ -91,7 +105,9 @@ a {
 
 .hero-overlay-bar {
   position: absolute;
-  inset: 0 auto 0 0; /* top:0; right:auto; bottom:0; left:0 */
+  top: 0;
+  bottom: 0;
+  left: var(--overlay-gap-desktop);
   width: var(--overlay-width-desktop);
   background: var(--overlay-bg);
   color: var(--text-on-dark);
@@ -181,11 +197,13 @@ a {
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-overlay-bar {
+    left: var(--overlay-gap-tablet);
     width: var(--overlay-width-tablet);
   }
 }
 @media (max-width: 640px) {
   .hero-overlay-bar {
+    left: var(--overlay-gap-mobile);
     width: var(--overlay-width-mobile);
   }
   .footer-inner {
